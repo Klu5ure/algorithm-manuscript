@@ -46,6 +46,27 @@ java -jar wvp-pro-2.7.2-07080233.jar > normal.log 2> error.log
 curl ifconfig.me
 ```
 
+```shell
+# git 查看旧版本，再回到新版本
+git log
+commit ea7bdffe3ce1d2f9f12d605416554d9f8472ed30 (HEAD, master)
+Author: Klu5ure <errorhassei@qq.com>
+Date:   Fri Aug 2 18:04:55 2024 +0800
+
+    new
+
+commit e1dd3d6bf1c057e5de671b18386999df6e647980
+Author: Klu5ure <errorhassei@qq.com>
+Date:   Fri Aug 2 18:04:21 2024 +0800
+
+    init
+
+
+git checkout e1dd3d
+git checkout ea7bdffe
+# 如果退回到init后不记得新版本的id了，直接看log是找不到的，可以用git reflog，然后git checkout
+```
+
 ```java
 // @EventListener使用
 
@@ -133,3 +154,5 @@ runaway 但是敌人 一代目二代目多代 bgm庭院
 集中、激烈和持续的练习可以增强大脑的可塑性，提高灰质密度和白质连通性
 
 不能创不能理
+
+五金少女
