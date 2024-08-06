@@ -155,4 +155,20 @@ runaway 但是敌人 一代目二代目多代 bgm庭院
 
 不能创不能理
 
+
+
+spend
+
+补充方面的知识，捧着一摞书
+
+修理工 看完一本书
+
+扩散性百万甜面包 十小时
+
+i spent several months doing reasearch and making notes
+
+
+
+
+
 五金少女
