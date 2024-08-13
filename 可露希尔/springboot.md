@@ -155,6 +155,8 @@ runaway 但是敌人 一代目二代目多代 bgm庭院
 
 不能创不能理
 
+Abishek在8个月前在朝九晚五之后学习代码编程。他没有告诉任何人在做什么，他推出了3个产品，其中2个是赚钱的
+
 
 
 spend
@@ -166,6 +168,8 @@ spend
 扩散性百万甜面包 十小时
 
 i spent several months doing reasearch and making notes
+
+
 
 
 
