@@ -40,7 +40,14 @@ sudo systemctl disable firewalld
 sudo systemctl status firewalld
 sudo firewall-cmd --list-all
 
+# 标准输出放到normal.log 错误输出放到error.log
 java -jar wvp-pro-2.7.2-07080233.jar > normal.log 2> error.log
+
+# 都放到output.log
+nohup java -jar your-application.jar > output.log 2>&1 &
+# 类似于上面的命令，1代表标准输出，2代表错误输出，&1代表放到1输出的地方也就是output.log，但是直接2>output.log可能会覆盖掉原来的标准输出，所以要用&1
+nohup java -jar your-application.jar 1 > output.log 2>output.log &
+
 
 查看公网地址
 curl ifconfig.me
