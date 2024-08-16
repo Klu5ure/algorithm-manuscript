@@ -48,6 +48,9 @@ nohup java -jar your-application.jar > output.log 2>&1 &
 # 类似于上面的命令，1代表标准输出，2代表错误输出，&1代表放到1输出的地方也就是output.log，但是直接2>output.log可能会覆盖掉原来的标准输出，所以要用&1
 nohup java -jar your-application.jar 1 > output.log 2>output.log &
 
+# java远程debug，先在idea右上角添加配置，填上服务器ip，打包上传，然后服务器运行下面的命令，idea启动
+java -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:5005 -jar
+
 
 查看公网地址
 curl ifconfig.me
