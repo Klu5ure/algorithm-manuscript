@@ -75,6 +75,19 @@ git checkout ea7bdffe
 ```
 
 ```java
+// @PathVariable和@RequestParam
+@GetMapping("/users/{id}")
+public ResponseEntity<User> getUserByIdAndFilter(@PathVariable("id") Long id,
+                                                 @RequestParam("filter") String filter) {
+    // 使用id从路径中提取
+    // 使用filter从查询参数中提取
+    // 处理代码
+}
+```
+
+
+
+```java
 // @EventListener使用
 
 @Service
