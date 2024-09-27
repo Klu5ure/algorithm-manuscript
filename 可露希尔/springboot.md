@@ -130,6 +130,41 @@ public class EmailService {
 
 ```
 
+
+
+- Throwable
+  - Error：系统级别的错误，jvm无法处理
+  - Exception：可捕获和处理的异常
+    - Checked Exception：如果不加try catch或者throws，编译无法通过
+    - Unchecked Exception：不加try catch或者throws，可以运行，但是一旦发生异常，程序直接停止，加了try catch之后，即使发生异常，程序不会停止
+
+```
+Throwable
+│
+├── Error                      （严重问题，通常无法处理）
+│   ├── OutOfMemoryError
+│   ├── StackOverflowError
+│   └── InternalError
+│
+└── Exception                  （检查异常，可以处理的异常）
+    │
+    ├── Checked Exception      （检查异常，必须处理）
+    │   ├── IOException
+    │   ├── SQLException
+    │   └── ClassNotFoundException
+    │
+    └── Unchecked Exception    （非检查异常，不强制处理）
+        └── RuntimeException
+            ├── NullPointerException
+            ├── ArrayIndexOutOfBoundsException
+            ├── ClassCastException
+            ├── IllegalArgumentException
+            └── ArithmeticException
+
+```
+
+
+
 js插件分析成分
 方舟音乐 文本播放器
 东方
