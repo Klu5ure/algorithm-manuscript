@@ -135,8 +135,8 @@ public class EmailService {
 - Throwable
   - Error：系统级别的错误，jvm无法处理
   - Exception：可捕获和处理的异常
-    - Checked Exception：如果不加try catch或者throws，编译无法通过
-    - Unchecked Exception：不加try catch或者throws，可以运行，但是一旦发生异常，程序直接停止，加了try catch之后，即使发生异常，程序不会停止
+    - Checked Exception：如果不加try catch或者throw，编译无法通过。加了try catch之后，即使发生异常，程序不会停止
+    - Unchecked Exception：不加try catch或者throw，可以运行，但是一旦发生异常，程序直接停止。加了try catch之后，即使发生异常，程序不会停止
 
 ```
 Throwable
@@ -160,6 +160,54 @@ Throwable
             ├── ClassCastException
             ├── IllegalArgumentException
             └── ArithmeticException
+
+```
+
+```java
+/**
+回调函数，将函数作为参数传递到另一个函数中，然而java做不到，所以要用接口来代替，做法
+1.定义接口DataCallback
+2.定义一个函数fetchData(DataCallback callback)
+3.调用fetchData函数的时候，实现接口。其实这时候就相当于定义好了想要传入的函数具体是什么
+
+**/
+public interface DataCallback {
+    void onSuccess(String data);
+    void onError(String error);
+}
+public class DataService {
+    public void fetchData(DataCallback callback) {
+        // 模拟异步操作
+        new Thread(() -> {
+            try {
+                // 模拟网络延迟
+                Thread.sleep(2000);
+                String result = "Fetched Data";
+                callback.onSuccess(result); // 调用成功的回调
+            } catch (InterruptedException e) {
+                callback.onError("Error fetching data"); // 调用错误的回调
+            }
+        }).start();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        DataService dataService = new DataService();
+        dataService.fetchData(new DataCallback() {
+            @Override
+            public void onSuccess(String data) {
+                System.out.println("Data received: " + data);
+            }
+
+            @Override
+            public void onError(String error) {
+                System.err.println("Failed to fetch data: " + error);
+            }
+        });
+        
+        System.out.println("Fetching data...");
+    }
+}
 
 ```
 
