@@ -77,6 +77,27 @@ git checkout ea7bdffe
 # 如果退回到init后不记得新版本的id了，直接看log是找不到的，可以用git reflog，然后git checkout
 ```
 
+```shell
+# how to send a PR
+# 关联origin（git clone的时候已经关联）和upstream
+git remote add upstream https://github.com/original-owner/original-repo.git
+git fetch upstream
+
+# 合并，有两种方法，第一种是merge，第二种是upstream，如果你的分支是master，将main改成master
+# 方法一，merge
+git checkout main  
+git merge upstream/main  
+# 方法二，rebase
+git checkout main  
+git rebase upstream/main
+
+git push origin
+
+# 如果有冲突，git pull
+
+# git pull拉取origin, git fetch拉取upstream，处理好冲突，然后git push提交到origin，就能从origin提交到upstream
+```
+
 ```java
 // @PathVariable和@RequestParam
 @GetMapping("/users/{id}")
