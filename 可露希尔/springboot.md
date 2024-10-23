@@ -57,6 +57,19 @@ curl ifconfig.me
 ```
 
 ```shell
+# git 提交代码流程
+git checkout master
+git pull origin master
+git checkout -b feature/your-feature-name # git branch xxx + git checkout xxx
+git add .
+git commit -m "Implement new feature"
+git push origin feature/your-feature-name
+提交PR
+git branch -d feature/your-feature-name     # Delete the branch locally
+git push origin --delete feature/your-feature-name  # Delete the branch remotely
+```
+
+```shell
 # git 查看旧版本，再回到新版本
 git log
 commit ea7bdffe3ce1d2f9f12d605416554d9f8472ed30 (HEAD, master)
@@ -78,14 +91,14 @@ git checkout ea7bdffe
 ```
 
 ```shell
-# how to send a PR
+# how to send a PR to upstream
 # 关联origin（git clone的时候已经关联）和upstream
 git remote add upstream https://github.com/original-owner/original-repo.git
 git fetch upstream
 
-# 合并，有两种方法，第一种是merge，第二种是upstream，如果你的分支是master，将main改成master
+# 合并，有两种方法，第一种是merge，第二种是rebase
 # 方法一，merge
-git checkout main  
+git checkout main  # 如果你的分支是master，将main改成master
 git merge upstream/main  
 # 方法二，rebase
 git checkout main  
@@ -96,6 +109,9 @@ git push origin
 # 如果有冲突，git pull
 
 # git pull拉取origin, git fetch拉取upstream，处理好冲突，然后git push提交到origin，就能从origin提交到upstream
+
+
+# git pull upstream master = git fetch upstream + git merge upstream/master
 ```
 
 ```java
