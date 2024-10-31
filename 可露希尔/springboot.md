@@ -54,6 +54,19 @@ java -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0
 
 查看公网地址
 curl ifconfig.me
+
+# 查看大小，-h人类阅读 -r倒序排序
+du -h --max-depth=1 . | sort -hr
+# 正序，默认是按第一列的数字排序，加上-h后，它就知道这个k m g是什么意思，可以按文件大小排序
+du -h --max-depth=1 . | sort -h
+4.0K   ./file.txt
+200K   ./dir1
+50M    ./dir2
+1.2G   ./dir3
+
+grep "test" output.log
+#ABC 后 前 前后
+grep "test" output.log -A 3 
 ```
 
 ```shell
