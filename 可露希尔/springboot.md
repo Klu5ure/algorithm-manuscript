@@ -262,6 +262,33 @@ public class Main {
 
 ```
 
+```java
+// license
+// 生成一个证书，里面包含过期时间、本机硬件等信息，将证书放到程序所在目录
+// 程序运行的时候，获取当前时间和当前机器硬件信息，再获取上面生成的证书信息，作对比，通过了才继续运行
+
+这样的话，假如用户换了一个机器，或者过期了，就无法继续运行程序
+但是由于证书是跟程序放在一起的，用户如果修改了里面的过期时间，就又能继续用
+
+所以需要用到非对称加密
+
+```
+
+```shell
+# 环境配置
+# minio client
+# 安装minio client
+wget https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod +x mc
+sudo mv mc /usr/local/bin/
+
+# 设置minio的别名、地址、账号密码（与配置文件application-dev.yml里的minio配置一致）
+mc alias set minio http://192.168.10.88:9000 minio miniostorage
+
+# 测试mc client是否能正常使用，在minio所在的服务器创建一个桶，名为mybucket，使用以下命令进行传输，然后去minio查看文件
+mc cp /path/to/local/file minio/mybucket/ 
+```
+
 
 
 js插件分析成分
