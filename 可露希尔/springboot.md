@@ -1,9 +1,107 @@
+# linux安装、权限、目录
+
+```shell
+# linux安装软件方式，以ubuntu为例
+# 二进制方式
+    # 安装deb包
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt -f install
+    或者直接apt install xxx.deb，会自动帮你dpkg
+    # 安装直接二进制文件
+    wget https://下载链接
+    chmod +x 文件名
+    sudo mv 文件名 /usr/local/bin/
+# apt
+	# 相当于直接从网上下载deb包，然后安装，帮你省略了繁琐的dpkg步骤
+	apt install ./软件名.deb
+
+# 关于可执行文件和配置文件的路径
+当你使用 apt 安装软件时，Ubuntu 会自动安装软件包的所有相关文件，包括可执行文件、库文件、文档和配置文件。安装过程通常包括以下几个步骤：
+可执行文件：会被放置到系统的标准路径，如 /usr/bin 或 /usr/local/bin。
+配置文件：通常会被放置到 /etc 目录中。例如，安装 nginx 时，配置文件可能会出现在 /etc/nginx 目录下。
+依赖关系：apt 会自动处理软件包的依赖关系，确保所有必需的库文件和工具都已经安装。
+	
+# 关于权限
+# 上面的二进制直接文件需要chmod +x 文件名来赋予权限
+ls -l /path/to/your/binary
+-rw-r--r-- 1 user user 12345678 Dec 23 12:00 your_binary
+chmod +x /path/to/your/binary
+ls -l /path/to/your/binary
+-rwxr-xr-x 1 user user 12345678 Dec 23 12:00 your_binary
+
+# 怎么看
+-rwxr-xr--为例
+# 第一个-代表文件，如果是d则是目录，
+rw-：所有者有读写权限。
+r--：所属组有只读权限。
+r--：其他人有只读权限。
+# 关于数字表示法：r=4,w=2,x=1, so 7=rwx,6=rw-,5=r-x,4=r--
+# chmod修改权限，可以用符号模式和数字模式
+chmod 644 example.txt # 所有者读写，组、其他只读
+chmod a+x script.sh # 所有用户添加执行权限
+chmod o-w example.txt # 删除其他人的写权限
+chmod +x script.sh：# 可以省略a，为 script.sh 文件添加可执行权限（对所有用户）。
+chmod u+x file.txt：# 给文件所有者（user）添加执行权限。
+chmod g-w file.txt：# 去掉同组用户的 写权限。
+chmod o=r file.txt：# 将其他用户的权限设置为只读。
+```
+
+- `/bin`：存放基本的二进制可执行文件，这些文件对所有用户都可用。通常包括常用命令，如 `ls`, `cp`, `mv` 等。
+- `/dev`：存放设备文件，代表系统中的硬件设备。通过这些文件访问硬件设备，如硬盘、终端等。
+- `/etc`：存放系统配置文件和目录，包含了系统和应用程序的全局配置。常见文件如 `/etc/passwd`（用户信息）和 `/etc/fstab`（文件系统挂载信息）。
+- `/lib`：存放系统运行时所需的共享库文件。它们是二进制文件的依赖库，通常为系统命令和工具提供支持。
+- `/libexec`：存放供其他程序使用的辅助程序或执行文件。这些程序通常不由用户直接运行。
+- `/media`：用于挂载外部设备（如 USB 驱动器、光盘等）。通常在该目录下自动生成外部设备的挂载点，如 `/media/cdrom/` 和 `/media/usb/`。
+- `/mnt`：用于临时挂载文件系统。系统管理员可以将其他文件系统挂载到此目录，如网络驱动器或外部磁盘。
+- `/opt`：存放第三方应用程序的目录，特别是大型或非系统级的应用。通常，这些应用会将所有文件（包括二进制文件、库、配置等）放在自己的子目录中。
+- `/tmp`：存放临时文件。系统和程序会使用该目录来存放临时数据，通常会定期清理目录中的内容。
+- `/usr`：存放系统程序和共享文件。这里包含大多数用户级的应用程序和库文件。它下有多个子目录，如：
+  - `/usr/bin`：包含大部分用户级可执行文件。
+  - `/usr/lib`：包含共享库。
+  - `/usr/share`：包含共享数据，如文档、图标等。
+  - `/usr/local`：存放本地安装的程序和文件，通常是管理员自己安装的软件。
+- `/var`：存放可变数据，主要包括日志文件、缓存文件、邮件队列等。由于这些数据是动态变化的，因此放在 `/var` 下。例如，`/var/log/` 存放系统日志，`/var/spool/` 存放邮件队列。
+
+```shell
+# 做成服务，引出默认配置文件地址，引出各个文件夹用处，
+
+# 关于服务，软件可以做成服务放在系统运行
+sudo nano /etc/systemd/system/your_service_name.service
+# -----------------
+[Unit]
+Description=描述服务的功能
+After=network.target  # 确保在网络服务启动后运行（如果需要网络）
+
+[Service]
+ExecStart=/path/to/your/program    # 程序的路径和参数
+WorkingDirectory=/path/to/working/directory  # （可选）指定工作目录
+Restart=always                     # （可选）在程序退出后自动重启
+User=your_username                 # （可选）指定运行的用户
+Group=your_groupname               # （可选）指定运行的用户组
+Environment="VAR_NAME=value"       # （可选）指定环境变量
+
+[Install]
+WantedBy=multi-user.target         # 服务运行的目标环境
+# ------------
+sudo systemctl daemon-reload
+sudo systemctl start your_service_name
+sudo systemctl status your_service_name
+
+sudo systemctl stop your_service_name 
+sudo systemctl enable your_service_name # 开机启用
+sudo systemctl disable your_service_name # 禁止开机启用
+```
+
+# docker、yum
+
 ```shell
 安装docker
 sudo yum update -y
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install docker-ce docker-ce-cli containerd.io
+# 上面会自动帮你装一个docker.service，所以这里可以直接start
 sudo systemctl start docker
 sudo docker run hello-world
 sudo systemctl enable docker
@@ -25,6 +123,8 @@ yum-config-manager --disable base
 sudo yum install epel-release
 
 ```
+
+# linux命令
 
 ```shell
 ps -ef | grep MediaServer
@@ -68,6 +168,8 @@ grep "test" output.log
 #ABC 后 前 前后
 grep "test" output.log -A 3 
 ```
+
+# git
 
 ```shell
 # git 提交代码流程
@@ -128,6 +230,8 @@ git push origin
 # git pull upstream master = git fetch upstream + git merge upstream/master
 ```
 
+# springboot
+
 ```java
 // @PathVariable和@RequestParam
 @GetMapping("/users/{id}")
@@ -138,8 +242,6 @@ public ResponseEntity<User> getUserByIdAndFilter(@PathVariable("id") Long id,
     // 处理代码
 }
 ```
-
-
 
 ```java
 // @EventListener使用
@@ -262,6 +364,8 @@ public class Main {
 
 ```
 
+# license minio
+
 ```java
 // license
 // 生成一个证书，里面包含过期时间、本机硬件等信息，将证书放到程序所在目录
@@ -288,6 +392,14 @@ mc alias set minio http://192.168.10.88:9000 minio miniostorage
 # 测试mc client是否能正常使用，在minio所在的服务器创建一个桶，名为mybucket，使用以下命令进行传输，然后去minio查看文件
 mc cp /path/to/local/file minio/mybucket/ 
 ```
+
+
+
+
+
+
+
+
 
 
 
