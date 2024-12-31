@@ -74,6 +74,8 @@ sudo systemctl status your_service_name
 sudo systemctl stop your_service_name 
 sudo systemctl enable your_service_name # 开机启用
 sudo systemctl disable your_service_name # 禁止开机启用
+
+# 如果不是root用户，用这个可能会有问题，用java -jar的话，并且yml在外面，要加上WorkingDirectory
 ```
 
 # docker、yum
