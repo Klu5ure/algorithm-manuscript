@@ -64,6 +64,10 @@ User=your_username                 # （可选）指定运行的用户
 Group=your_groupname               # （可选）指定运行的用户组
 Environment="VAR_NAME=value"       # （可选）指定环境变量
 
+# 日志输出
+StandardOutput=append:/vms/output.log
+StandardError=append:/vms/output.log
+
 [Install]
 WantedBy=multi-user.target         # 服务运行的目标环境
 # ------------
@@ -76,6 +80,12 @@ sudo systemctl enable your_service_name # 开机启用
 sudo systemctl disable your_service_name # 禁止开机启用
 
 # 如果不是root用户，用这个可能会有问题，用java -jar的话，并且yml在外面，要加上WorkingDirectory
+
+# 有时候SELinux会导致无法输入日志到某个文件，需要关闭
+# setenforce 0 临时禁用
+# chcon -t var_log_t /root/wvp/ 或者将日志文件的目录添加到这里
+
+# 排错流程，先直接运行一下，再看看日志journalctl -u vms.service，再看看权限，防火墙和SELinux
 ```
 
 # docker、yum
@@ -377,88 +387,6 @@ mc alias set minio http://192.168.10.88:9000 minio miniostorage
 # 测试mc client是否能正常使用，在minio所在的服务器创建一个桶，名为mybucket，使用以下命令进行传输，然后去minio查看文件
 mc cp /path/to/local/file minio/mybucket/ 
 ```
-
-
-
-
-
-
-
-
-
-
-
-js插件分析成分
-方舟音乐 文本播放器
-东方
-fx音乐播放
-随机背景https://www.dmoe.cc/random.php
-
-
-
-hexo版本，kami版本 音乐
-音乐 妄想ai歌
-人形日志 存档几
-pixiv搜索https://pixiv.re/115293810.png 
-大图书馆
-幻灯夜话
-梦莹流光 蝉在叫
-丝滑动画 
-eyesof
-星铁
-蛙pt
-把我害惨了
-表情包搜索数据库
-取代 我们有十个io金牌 但不是我 周心境
-我们所有的内容都是由人类编写的
-背熟 xx 打底 不乏几百本精品xx打底
-像呼吸一样自然
-ppt ai绘图介绍 贴
-runaway 但是敌人 一代目二代目多代 bgm庭院 
-
-2033年，在一切纸质记录彻底消失于人类社会时，
-古老的书籍宛如候鸟般回到了文字最初的起点，
-没人想到那竟是一座未知的城。
-城中唯一的建筑是栋无限延伸的图书馆，
-记录着无限的当下，
-即未来的过去和过去的未来。红魔馆数据殿堂
-
-哦？东西丢了？
-很符合你的风格
-别担心，我自有办法（让我来吧）
-下次可得长点心
-
-战争间隙，博士利用难得的空闲时间，记录最近发生的事。
-
-代码 数字艺术家 学画画
-法国人 数学优雅 不管你懂不懂
-集中、激烈和持续的练习可以增强大脑的可塑性，提高灰质密度和白质连通性
-
-不能创不能理
-
-Abishek在8个月前在朝九晚五之后学习代码编程。他没有告诉任何人在做什么，他推出了3个产品，其中2个是赚钱的
-
-
-
-spend
-
-补充方面的知识，捧着一摞书
-
-修理工 看完一本书
-
-扩散性百万甜面包 十小时
-
-i spent several months doing reasearch and making notes
-
-
-
-
-
-
-
-五金少女
-
-
 
 
 
