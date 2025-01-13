@@ -436,6 +436,8 @@ nas 病毒 二次约？妄想哀歌
 You have to trust in something--your gut, destiny, life, karma, whatever--because believing that the dots will connect down the road will give you the confidence to follow your heart, even when it leads you off the well-worn path, and that will make all the difference.
 中世纪 信仰 之力
 
+爱发电 我也被同人制作，这种不以盈利为目标，只为了心中的爱与情怀的充满浪漫主义的工作吸引
+
 1000小时是真的吗，不重要，需要相信一些什么，相信 脑 精神 心技体
 
 这里的书屋构造真奇妙 得赶紧回去告诉
@@ -746,6 +748,8 @@ lol几小时 晕 最后一丝机会 以后已经用尽了
 
 大量阅读
 
+栗子是JRPG的资深玩家，从空之轨迹到工作室系列无所不玩， 月澄则是资深宅民，新番旧番全都看过，她能想到的捏他似乎无穷无尽。
+
 
 
 ### 沉浸专注无干扰
@@ -796,6 +800,8 @@ i spent several months doing reasearch and making notes
 
 萝卜 直播翻译24小时 豆豆头绘画直播8小时
 
+每当她开始一项工作，都会不眠不休的做到完成为止。这个世界上大概只有她有那个毅力与能力去将月澄设想的世界投射到游戏之中。
+
 ### **快速**
 
 快一点 拉链 限时 乔布斯喝水 小太阳搜索 全键盘 雪峰 机灵劲 给出一张纸，瞄一眼写出答案
@@ -812,6 +818,8 @@ i spent several months doing reasearch and making notes
 3.1 随时掏出一本笔记本 酒馆侍女 出门在外也学满
 
 快 高频 doinb 小太阳 敲键盘 一边说话一边 限时 赶着字来打 星穹铁道预判
+
+月澄是可以以时速一万字进行创作的天才
 
 
 
