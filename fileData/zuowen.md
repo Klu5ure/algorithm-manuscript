@@ -6,11 +6,23 @@
 
 # immedia
 
+ctrl+alt+左  鼠标中键
+
+右键或者f3 书签ctrl+1跳转 win2 view-tool-windows
+
+右键 diagrams 查看依赖关系
+
+sequencediagram 时序图插件 右键某个方法 点击sequence diagram
+
+.if .var
+
+测试类 单元测试
+
+小红书历史 网易云自取
+
 leetcode以及新概念（听说读写译）的曲线版
 
 旧手机备忘录
-
-看看comfyui
 
 命运石之门
 
@@ -24,9 +36,7 @@ leetcode以及新概念（听说读写译）的曲线版
 
 # maybe
 
-微信记录导出，找出所有@用过的名字
 
-黑盒 签到
 
 
 
@@ -184,6 +194,10 @@ labuladong
 **yolo ai 语音 绘画是内置python吗，是通过调用命令来运行吗，用的是哪个类，跟我的django用的一样吗**
 
 **歌曲好听部分截取**
+
+微信记录导出，找出所有@用过的名字
+
+黑盒 签到
 
 闲鱼爬虫
 
