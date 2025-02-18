@@ -1487,6 +1487,8 @@ world.execute(me)
 errorHassei
 五金少女
 
+我是蛇妖帮，我爱打游戏
+
 
 
 # rem
